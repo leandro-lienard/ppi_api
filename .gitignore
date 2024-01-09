@@ -1,4 +1,7 @@
 # Ignore Config files
 *.config
 
+# Ignore Python cache files 
+*.pyc
+
 
