@@ -20,6 +20,7 @@ import json
 import traceback
 import os
 import configparser
+import prex_cotizacion 
 
 MAIN_ACCOUNT = 197663
 CI = "INMEDIATA"
@@ -110,11 +111,18 @@ def main():
     
     BONOS_DISP = round( POZO_A_SIMULAR / float(ccl['price']))
     
-    print("\nGD30 DISPONIBLES ", BONOS_DISP) #precio cada 100 units?
+    print("\nGD30 DcISPONIBLES ", BONOS_DISP) #precio cada 100 units?
     get_bonos_value_usd(BONOS_DISP, 'GD30D', CI)
     get_bonos_value_usd(BONOS_DISP, 'GD30D', A_48HS)
     get_bonos_value_pesos(BONOS_DISP, 'GD30', CI)
     
+    
+    #************************* PREX COTIZACION *****************************************
+    pesos_prex = prex_cotizacion.get_pesos_totales(POZO_A_SIMULAR)
+    print("\nPREX pesos: ", format_number(pesos_prex)) #precio cada 100 units?
+
+
+
 if __name__ == "__main__":
     main()
     
