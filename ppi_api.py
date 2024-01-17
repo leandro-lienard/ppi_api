@@ -51,7 +51,7 @@ def get_ledes_value_usd(ledes_disp, letra, liquidacion):
 
 def get_ledes_value_pesos(ledes_disp, letra, liquidacion):
     total_value = ledes_disp * get_cotizacion(letra , LETRAS, liquidacion)['price']
-    print("\nfor %s %s the value is $ %s pesos" % (letra, liquidacion, format_number(total_value)))
+    print("\nfor %s %s the value is $%s pesos | cotizacion $%s" % (letra, liquidacion, format_number(total_value), format_number(total_value/POZO_A_SIMULAR)))
     
 def get_bonos_value_usd(cant_disp, bono, liquidacion):
     total_value = cant_disp * get_cotizacion(bono, BONOS, liquidacion)['price']
@@ -59,7 +59,7 @@ def get_bonos_value_usd(cant_disp, bono, liquidacion):
 
 def get_bonos_value_pesos(cant_disp, bono, liquidacion):
     total_value = cant_disp * get_cotizacion(bono, BONOS, liquidacion)['price']
-    print("\nfor %s %s the value is $ %s pesos" % (bono, liquidacion, format_number(total_value)))
+    print("\nfor %s %s the value is $%s pesos | cotizacion $%s" % (bono, liquidacion, format_number(total_value), format_number(total_value/POZO_A_SIMULAR)))
     
 def format_number(number):
     return "{:,}".format(round(number))
@@ -111,7 +111,7 @@ def main():
     
     BONOS_DISP = round( POZO_A_SIMULAR / float(ccl['price']))
     
-    print("\nGD30 DcISPONIBLES ", BONOS_DISP) #precio cada 100 units?
+    print("\nGD30 DISPONIBLES ", BONOS_DISP) #precio cada 100 units?
     get_bonos_value_usd(BONOS_DISP, 'GD30D', CI)
     get_bonos_value_usd(BONOS_DISP, 'GD30D', A_48HS)
     get_bonos_value_pesos(BONOS_DISP, 'GD30', CI)
