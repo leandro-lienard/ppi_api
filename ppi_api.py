@@ -70,13 +70,15 @@ POZO_A_SIMULAR = 1000 #usd ccl
 def main():
     login_account()
     print("\nBuscando cotizacion LEDES mas conveniente with %i usd ccl" % POZO_A_SIMULAR)
-    
+    conclusion_text = ""
+
     ccl = get_cotizacion('XE4C',LETRAS, CI)
     mep_ci = get_cotizacion( 'XE4D', LETRAS, CI)
     mep_48hs = get_cotizacion( 'XE4D', LETRAS, A_48HS)
     pesos_ci = get_cotizacion( 'X18E4', LETRAS, CI)
     print("\nccl ci: %s \nmep ci %s \nmep 48hs %s \npesos ci %s" % (ccl, mep_ci, mep_48hs, pesos_ci))
-    
+    conclusion_text +=  "\nccl ci: %s \nmep ci %s \nmep 48hs %s \npesos ci %s" % (ccl, mep_ci, mep_48hs, pesos_ci)
+
     LEDES_disp = round( POZO_A_SIMULAR / float(ccl['price']))
     
     print("\nLEDES DISPONIBLES ", LEDES_disp)
@@ -120,8 +122,7 @@ def main():
     #************************* PREX COTIZACION *****************************************
     pesos_prex = prex_cotizacion.get_pesos_totales(POZO_A_SIMULAR)
     print("\nPREX pesos: ", format_number(pesos_prex)) #precio cada 100 units?
-
-
+    return conclusion_text
 
 if __name__ == "__main__":
     main()
