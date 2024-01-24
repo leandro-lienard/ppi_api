@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, url_for, Response
 from telegram import Update, ForceReply, Bot
 #from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
-import yfinance as yf
 import configparser
 import ppi_api
 
@@ -24,17 +23,6 @@ async def hello_world2():
     chat = 5617168866
     hola = await bot.sendMessage(chat_id=chat, text="ppi.main()") ##TODO: descomentar y que mande el informe de ppi_api
     return Response('start ok', status=200)
-
-@app.route('/precio/<accion>')
-async def precio(accion):
-    chat = 5617168866
-    data = yf.download(accion, start="2023-07-31", end="2023-08-01")
-    valor = str(data['Close'].iloc[-1])
-    mensaje = f"El valor actual de {accion} es: {valor}"
-    hola = await BOT.sendMessage(chat_id=chat, text=mensaje)
-    return render_template("index.html")
-
-
 
 # To Get Chat ID and message which is sent by client
 def message_parser(message):

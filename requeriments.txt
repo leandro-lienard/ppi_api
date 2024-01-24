@@ -1,0 +1,5 @@
+flask 
+ppi_client
+python-telegram-bot
+requests
+configparser

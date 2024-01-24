@@ -30,3 +30,8 @@ Set-ExecutionPolicy Bypass -Scope Process
 .\env\Scripts\Activate
 
 > flask --app flask_app.py run
+
+
+
+### Setup token with chat
+> https://api.telegram.org/bot<TOKEN>/setWebhook?url=<URL>
