@@ -128,7 +128,7 @@ def main():
 
     cotizacion_al30 = get_cotizacion_object(
         "AL30C - AL30",
-        get_bonos_value_usd(BONOS_DISP, 'AL30D', CI),
+        round(get_bonos_value_usd(BONOS_DISP, 'AL30D', CI), 2),
         get_bonos_value_usd(BONOS_DISP, 'AL30D', A_48HS),
         get_bonos_value_pesos(BONOS_DISP, 'AL30', CI)
     )
@@ -148,7 +148,7 @@ def main():
   
     cotizacion_gd30 = get_cotizacion_object(
         "GD30C - GD30",
-        get_bonos_value_usd(BONOS_DISP, 'GD30D', CI),
+        round(get_bonos_value_usd(BONOS_DISP, 'GD30D', CI), 2),
         get_bonos_value_usd(BONOS_DISP, 'GD30D', A_48HS),
         get_bonos_value_pesos(BONOS_DISP, 'GD30', CI)
     )
