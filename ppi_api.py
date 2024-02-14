@@ -81,8 +81,13 @@ def format_number(number):
 def get_sorted_by_pesos_ci(cotizaciones):
     return sorted(cotizaciones, key=lambda x: x['pesos_ci'], reverse=True)
 
+def get_sorted_by_mep_ci(cotizaciones):
+    return sorted(cotizaciones, key=lambda x: x['mep_ci'], reverse=True)
 
-POZO_A_SIMULAR = 1000 #usd ccl
+def get_sorted_by_mep_48hs(cotizaciones):
+    return sorted(cotizaciones, key=lambda x: x['mep_48hs'], reverse=True)
+
+POZO_A_SIMULAR = 130 #usd ccl
 
 def main():
     login_account()
@@ -158,15 +163,20 @@ def main():
     
     cotizacion_prex = get_cotizacion_object(
         "PREX",
-        "no aplica",
-        "no aplica",
+        POZO_A_SIMULAR - 1,
+        POZO_A_SIMULAR - 1,
         pesos_prex / POZO_A_SIMULAR
-   )
+    )
 
     print("\nPREX pesos: ", format_number(pesos_prex)) #precio cada 100 units?
+
+    ## TODO: cambiar dependiendo parmatero
     cotizaciones_sorted = get_sorted_by_pesos_ci([cotizacion_letras, cotizacion_al30, cotizacion_gd30, cotizacion_prex])
-    print("\nBEST COTIZACION", cotizaciones_sorted[0]) #precio cada 100 units?
-    
+    print("\nBEST COTIZACION", cotizaciones_sorted.pop(0)) #precio cada 100 units?
+    for cotizacion in  cotizaciones_sorted:
+        print(cotizacion) #precio cada 100 units?
+
+
     return cotizaciones_sorted
 
 
